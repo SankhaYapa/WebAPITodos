@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using WebApplication2.Models;
+
 using WebApplication2.Services;
+using WebApplication2Services;
 
 namespace WebApplication2.Controllers
 {
@@ -9,12 +10,19 @@ namespace WebApplication2.Controllers
     [ApiController]
     public class TodosController : ControllerBase
     {
-        private TodoService _todoService;
+        
+        private ITodoRepository _todoService;
 
-        public TodosController()
+        public TodosController(ITodoRepository repository )
         {
-            _todoService = new TodoService();
+            _todoService = repository;
         }
+        //private TodoService _todoService; 
+
+        //public TodosController()
+        //{
+        //    _todoService = new TodoService();
+        //}
         [HttpGet]
         public IActionResult GetTodos()  
         {

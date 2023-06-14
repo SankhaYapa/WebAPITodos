@@ -1,8 +1,9 @@
 ﻿using WebApplication2.Models;
+using WebApplication2Services;
 
 namespace WebApplication2.Services
 {
-    public class TodoService
+    public class TodoService :ITodoRepository 
     {
 
         //Get Todos
