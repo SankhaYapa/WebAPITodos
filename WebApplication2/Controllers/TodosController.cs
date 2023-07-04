@@ -1,12 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-using WebApplication2.Services;
-using WebApplication2Services;
+using WebApplication2Services.Todos;
 
 namespace WebApplication2.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/todos")]
     [ApiController]
     public class TodosController : ControllerBase
     {
@@ -29,14 +28,15 @@ namespace WebApplication2.Controllers
             var myTodos = _todoService.AllTodos();
             return Ok(myTodos);
         }
-        [HttpGet("{id?}")]
-        public IActionResult GetSpecificTodos(int? id)
+        [HttpGet("{id}")]
+        public IActionResult GetTodo(int id)
         {
-
-            var myTodos = _todoService.AllTodos().Where(t => t.Id == id);
-            //   if(id is null) return Ok(myTodos);
-            //   myTodos.Where(t => t.Id == id);
-            return Ok(myTodos);
+            var todo=_todoService.GetTodo(id);
+            if(todo == null)
+            {
+                return NotFound();
+            }
+            return Ok(todo);
         }
     }
 }
