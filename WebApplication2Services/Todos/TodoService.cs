@@ -1,9 +1,8 @@
 ﻿using WebApplication2.Models;
-using WebApplication2Services;
 
-namespace WebApplication2.Services
+namespace WebApplication2Services.Todos
 {
-    public class TodoService :ITodoRepository 
+    public class TodoService : ITodoRepository
     {
 
         //Get Todos
@@ -55,6 +54,11 @@ namespace WebApplication2.Services
             };
             todos.Add(todo4);
             return todos;
+        }
+
+        public Todo GetTodo(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
