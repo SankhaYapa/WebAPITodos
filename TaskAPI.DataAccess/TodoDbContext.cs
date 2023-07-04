@@ -21,10 +21,10 @@ namespace TaskAPI.DataAccess
         {
             modelBuilder.Entity<Author>().HasData( new Author[]
             {
-                new Author { Id = 1,FullName="Sankha"},
-                new Author { Id = 2,FullName="Yapa"},
-                new Author { Id = 3,FullName="Priyamantha"},
-                new Author { Id = 4,FullName="Bandara"},
+                new Author { Id = 1,FullName="Sankha",AddressNo="45",Street="Street1",City="City 1"},
+                new Author { Id = 2,FullName="Yapa",AddressNo="46",Street="Street1",City="City 1"},
+                new Author { Id = 3,FullName="Priyamantha",AddressNo="47",Street="Street1",City="City 1"},
+                new Author { Id = 4,FullName="Bandara",AddressNo="48",Street="Street1",City="City 1"},
             });
             modelBuilder.Entity<Todo>().HasData(new Todo[] {
                 new Todo{
@@ -43,7 +43,7 @@ namespace TaskAPI.DataAccess
                 CreatedDate = DateTime.Now,
                 UpdatedDate = DateTime.Now.AddDays(5),
                 Status = TodoStatus.New,
-                AuthorId= 2,
+                AuthorId= 1,
             },new Todo{
                 Id = 3,
                 Title = "Get books for school form DB",

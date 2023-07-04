@@ -6,7 +6,7 @@ namespace WebApplication2Services.Todos
     {
 
         //Get Todos
-        public List<Todo> AllTodos()
+        public List<Todo> AllTodos(int authorId)
         {
             var todos = new List<Todo>();
             var todo1 = new Todo
@@ -56,7 +56,7 @@ namespace WebApplication2Services.Todos
             return todos;
         }
 
-        public Todo GetTodo(int id)
+        public Todo GetTodo(int authorId, int id)
         {
             throw new NotImplementedException();
         }
