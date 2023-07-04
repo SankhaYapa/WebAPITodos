@@ -1,20 +1,23 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using WebApplication2Services.Models;
 using WebApplication2Services.Todos;
 
 namespace WebApplication2.Controllers
 {
-    [Route("api/todos")]
+    [Route("api/authors/{authorId}/todos")]
     [ApiController]
     public class TodosController : ControllerBase
     {
         
         private ITodoRepository _todoService;
+        private IMapper _mapper;
 
-        public TodosController(ITodoRepository repository )
+        public TodosController(ITodoRepository repository,IMapper mapper )
         {
             _todoService = repository;
+            _mapper = mapper;
         }
         //private TodoService _todoService; 
 
@@ -23,20 +26,22 @@ namespace WebApplication2.Controllers
         //    _todoService = new TodoService();
         //}
         [HttpGet]
-        public IActionResult GetTodos()  
+        public ActionResult<ICollection<TodoDto>> GetTodos(int authorId)  
         {
-            var myTodos = _todoService.AllTodos();
-            return Ok(myTodos);
+            var myTodos = _todoService.AllTodos(authorId);
+            var mapperTodos = _mapper.Map<ICollection<TodoDto>>(myTodos);
+            return Ok(mapperTodos);
         }
         [HttpGet("{id}")]
-        public IActionResult GetTodo(int id)
+        public IActionResult GetTodo(int authorId, int id)
         {
-            var todo=_todoService.GetTodo(id);
-            if(todo == null)
+            var todo = _todoService.GetTodo(authorId,id);
+            if (todo == null)
             {
                 return NotFound();
             }
-            return Ok(todo);
+            var mapperTodo = _mapper.Map<TodoDto>(todo);
+            return Ok(mapperTodo);
         }
     }
 }

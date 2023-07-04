@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TaskAPI.DataAccess;
 
@@ -11,9 +12,11 @@ using TaskAPI.DataAccess;
 namespace TaskAPI.DataAccess.Migrations
 {
     [DbContext(typeof(TodoDbContext))]
-    partial class TodoDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230704083234_added data anotations")]
+    partial class addeddataanotations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -130,41 +133,41 @@ namespace TaskAPI.DataAccess.Migrations
                         {
                             Id = 1,
                             AuthorId = 1,
-                            CreatedDate = new DateTime(2023, 7, 4, 15, 5, 54, 691, DateTimeKind.Local).AddTicks(3035),
+                            CreatedDate = new DateTime(2023, 7, 4, 14, 2, 34, 575, DateTimeKind.Local).AddTicks(8063),
                             Description = "Get some text books for school",
                             Status = 0,
                             Title = "Get books for school form DB",
-                            UpdatedDate = new DateTime(2023, 7, 9, 15, 5, 54, 691, DateTimeKind.Local).AddTicks(3052)
+                            UpdatedDate = new DateTime(2023, 7, 9, 14, 2, 34, 575, DateTimeKind.Local).AddTicks(8091)
                         },
                         new
                         {
                             Id = 2,
-                            AuthorId = 1,
-                            CreatedDate = new DateTime(2023, 7, 4, 15, 5, 54, 691, DateTimeKind.Local).AddTicks(3062),
+                            AuthorId = 2,
+                            CreatedDate = new DateTime(2023, 7, 4, 14, 2, 34, 575, DateTimeKind.Local).AddTicks(8103),
                             Description = "Get some text books for school",
                             Status = 0,
                             Title = "Get books for school form DB",
-                            UpdatedDate = new DateTime(2023, 7, 9, 15, 5, 54, 691, DateTimeKind.Local).AddTicks(3063)
+                            UpdatedDate = new DateTime(2023, 7, 9, 14, 2, 34, 575, DateTimeKind.Local).AddTicks(8104)
                         },
                         new
                         {
                             Id = 3,
                             AuthorId = 3,
-                            CreatedDate = new DateTime(2023, 7, 4, 15, 5, 54, 691, DateTimeKind.Local).AddTicks(3065),
+                            CreatedDate = new DateTime(2023, 7, 4, 14, 2, 34, 575, DateTimeKind.Local).AddTicks(8105),
                             Description = "Get some text books for school",
                             Status = 0,
                             Title = "Get books for school form DB",
-                            UpdatedDate = new DateTime(2023, 7, 9, 15, 5, 54, 691, DateTimeKind.Local).AddTicks(3066)
+                            UpdatedDate = new DateTime(2023, 7, 9, 14, 2, 34, 575, DateTimeKind.Local).AddTicks(8106)
                         },
                         new
                         {
                             Id = 4,
                             AuthorId = 4,
-                            CreatedDate = new DateTime(2023, 7, 4, 15, 5, 54, 691, DateTimeKind.Local).AddTicks(3068),
+                            CreatedDate = new DateTime(2023, 7, 4, 14, 2, 34, 575, DateTimeKind.Local).AddTicks(8107),
                             Description = "Get some text books for school",
                             Status = 0,
                             Title = "Get books for school form DB",
-                            UpdatedDate = new DateTime(2023, 7, 9, 15, 5, 54, 691, DateTimeKind.Local).AddTicks(3069)
+                            UpdatedDate = new DateTime(2023, 7, 9, 14, 2, 34, 575, DateTimeKind.Local).AddTicks(8108)
                         });
                 });
 
