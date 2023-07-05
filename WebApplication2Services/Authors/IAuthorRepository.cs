@@ -10,6 +10,7 @@ namespace WebApplication2Services.Authors
     public interface IAuthorRepository
     {
         public List<Author> GetAuthors();
+        public List<Author> GetAuthors(string job,string search);
         public Author GetAuthor(int id);
     }
 }
