@@ -16,5 +16,7 @@ namespace WebApplication2Services.Models
     
         public string Address { get; set; }
 
+        public string JobRole { get; set; }
     }
 }
+ 

@@ -36,10 +36,10 @@ namespace WebApplication2.Controllers
 
         //mapping data 
         [HttpGet]
-        public ActionResult<ICollection<AuthorDto>> GetAuthors()
+        public ActionResult<ICollection<AuthorDto>> GetAuthors(string? job,string? search)
         {
-            throw new Exception("Test Error");
-            var authors = _service.GetAuthors();
+          //  throw new Exception("Test Error");
+            var authors = _service.GetAuthors(job,search);
            // var authorsDto = new List<AuthorDto>();
             //foreach (var author in authors)
             //{
@@ -66,3 +66,4 @@ namespace WebApplication2.Controllers
         }
     }
 }
+ 
