@@ -60,7 +60,17 @@ namespace WebApplication2Services.Todos
             return todos;
         }
 
+        public void DeleteTodo(Todo todo)
+        {
+            throw new NotImplementedException();
+        }
+
         public Todo GetTodo(int authorId, int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateTodo(Todo todo)
         {
             throw new NotImplementedException();
         }

@@ -53,5 +53,26 @@ namespace WebApplication2.Controllers
 
             return CreatedAtRoute("GetTodo", new {authorId=authorId,id=todoForReturn.Id},todoForReturn);
         }
+        [HttpPut("{todoId}")]
+        public ActionResult UpdateTodo(int authorId, int todoId,UpdateTodoDto todo) {
+            var updatingTodo=_todoService.GetTodo(authorId,todoId);
+            if(updatingTodo == null)
+            {
+                return NotFound();
+            }
+            _mapper.Map(todo, updatingTodo);
+            _todoService.UpdateTodo(updatingTodo);
+            return NoContent();
+        }
+        [HttpDelete("{todoId}")]
+        public ActionResult DeleteTodo(int authorId,int todoId) {
+            var deletingTodo = _todoService.GetTodo(authorId, todoId);
+            if (deletingTodo == null)
+            {
+                return NotFound();
+            }
+            _todoService.DeleteTodo(deletingTodo);
+            return NoContent(); 
+        }
     }
 }
