@@ -12,5 +12,6 @@ namespace WebApplication2Services.Authors
         public List<Author> GetAuthors();
         public List<Author> GetAuthors(string job,string search);
         public Author GetAuthor(int id);
+        public Author AddAuthor(Author author);
     }
 }

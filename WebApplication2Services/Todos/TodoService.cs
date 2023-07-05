@@ -4,6 +4,10 @@ namespace WebApplication2Services.Todos
 {
     public class TodoService : ITodoRepository
     {
+        public Todo AddTodo(int authorId, Todo todo)
+        {
+            throw new NotImplementedException();
+        }
 
         //Get Todos
         public List<Todo> AllTodos(int authorId)

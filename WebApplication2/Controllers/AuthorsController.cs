@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebApplication2.Models;
 using WebApplication2Services.Authors;
 using WebApplication2Services.Models;
 
@@ -53,7 +54,7 @@ namespace WebApplication2.Controllers
            var mapAuthors= _mapper.Map<ICollection<AuthorDto>>(authors);
             return Ok(mapAuthors);
         }
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetAuthor")]
         public IActionResult GetAuthor(int id)
         {
             var author = _service.GetAuthor(id);
@@ -64,6 +65,17 @@ namespace WebApplication2.Controllers
             var mappedAuthor=_mapper.Map<AuthorDto>(author);
             return Ok(mappedAuthor);
         }
+        [HttpPost]
+        public ActionResult<AuthorDto> CreateAuthor(CreateAuthorDto author) {
+           
+            var authorEntity=_mapper.Map<Author>(author);
+            var newAuthor=_service.AddAuthor(authorEntity);
+
+            var authorForReturn=_mapper.Map<AuthorDto>(newAuthor);
+
+            return CreatedAtRoute("GetAuthor", new {id=authorForReturn.Id},authorForReturn);
+        }
+
     }
 }
  
