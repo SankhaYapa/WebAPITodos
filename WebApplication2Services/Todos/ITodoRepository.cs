@@ -11,6 +11,6 @@ namespace WebApplication2Services.Todos
     {
         public List<Todo> AllTodos(int authorId);
         public Todo GetTodo(int authorId, int id);
-
+        public Todo AddTodo(int authorId, Todo todo);
     }
 }

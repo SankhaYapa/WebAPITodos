@@ -41,7 +41,14 @@ namespace WebApplication2Services.Authors
         {
             return _context.Author.Find(id);
         }
+        public Author AddAuthor(Author author)
+        {
 
+                _context.Author.Add(author);
+                _context.SaveChanges();
+
+            return _context.Author.Find(author.Id);
+        }
        
     }
 }

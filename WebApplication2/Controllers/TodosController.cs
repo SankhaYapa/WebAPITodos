@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebApplication2.Models;
 using WebApplication2Services.Models;
 using WebApplication2Services.Todos;
 
@@ -32,7 +33,7 @@ namespace WebApplication2.Controllers
             var mapperTodos = _mapper.Map<ICollection<TodoDto>>(myTodos);
             return Ok(mapperTodos);
         }
-        [HttpGet("{id}")]
+        [HttpGet("{id}",Name ="GetTodo")]
         public IActionResult GetTodo(int authorId, int id)
         {
             var todo = _todoService.GetTodo(authorId,id);
@@ -42,6 +43,15 @@ namespace WebApplication2.Controllers
             }
             var mapperTodo = _mapper.Map<TodoDto>(todo);
             return Ok(mapperTodo);
+        }
+        [HttpPost]
+        public ActionResult<TodoDto> CreateTodo(int authorId, CreateTodoDto todo)
+        {
+            var todoEntity=_mapper.Map<Todo>(todo);
+            var newTodo = _todoService.AddTodo(authorId, todoEntity);
+            var todoForReturn=_mapper.Map<TodoDto>(newTodo);
+
+            return CreatedAtRoute("GetTodo", new {authorId=authorId,id=todoForReturn.Id},todoForReturn);
         }
     }
 }

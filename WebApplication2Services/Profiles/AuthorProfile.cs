@@ -15,6 +15,8 @@ namespace WebApplication2Services.Profiles
         {
             CreateMap<Author, AuthorDto>()
                 .ForMember(dest=>dest.Address,opt=>opt.MapFrom(src=>$"{src.AddressNo},{src.Street},{src.City}"));
+
+            CreateMap<CreateAuthorDto, Author>();
         }
     }
 }
